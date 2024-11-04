@@ -1,27 +1,21 @@
 // App.js - Main Application Entry Point with LNB and Routing
 import React from 'react';
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import CreatePage from './components/CreatePage';
 import FieldManagement from './components/FieldManagement';
 import RecordManagement from './components/RecordManagement';
+import Sidebar from './components/Sidebar';
+import TableDetail from './components/TableDetail';
 import TablePage from './components/TablePage';
 
 const AppLayout = styled.div`
   display: flex;
 `;
 
-const Sidebar = styled.div`
-  width: 200px;
-  background-color: #f5f5f5;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const MainContent = styled.div`
+const MainContent = styled.main`
   flex: 1;
-  padding: 20px;
+  min-height:100vh;
 `;
 
 function App() {
@@ -29,17 +23,12 @@ function App() {
     <Router>
       <AppLayout>
         {/* LNB (Left Navigation Bar) */}
-        <Sidebar>
-          <h2>메뉴</h2>
-          <Link to="/">테이블 생성</Link>
-          <Link to="/fields">필드 관리</Link>
-          <Link to="/records">레코드 화면 관리</Link>
-          <Link to="/create">페이지 만들기</Link>
-        </Sidebar>
+        <Sidebar />
         {/* Main Content */}
         <MainContent>
           <Routes>
             <Route path="/" element={<TablePage />} />
+             <Route path="/tables/:tableName" element={<TableDetail />} />
             <Route path="/fields" element={<FieldManagement />} />
             <Route path="/records" element={<RecordManagement />} />
             <Route path="/create" element={<CreatePage />} />
