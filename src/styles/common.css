@@ -1,0 +1,262 @@
+  :root {
+    --basic-font: 16px;
+    --color-main: #1268E3;
+    --color-primary: #111;
+    --color-secondary: #111;
+    --color-success: #111;
+    --color-danger: #111;
+    --color-warning: #111;
+    --color-info: #111;
+    --color-dark: #000;
+    --color-white: #fff;
+
+    --button-border-basic: #ddd;
+    --button-size-small: 40px;
+    --button-size-medium: 50px;
+    --button-size-large: 60px;
+
+    --border-color-default: #dbe0e5;
+
+    --nav-hover-background: rgba(255, 255, 255, 0.04);
+
+    --box-shadow: 0px 8px 24px rgba(27, 46, 94, .08);
+    --card-box-shadow: 0px 8px 24px rgba(27, 46, 94, .12);
+
+    --transition: 0.14s;
+  }
+
+
+
+
+  * {
+    font-family: 'Pretendard', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  html,
+  body,
+  div,
+  span,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  em,
+  img,
+  strong,
+  b,
+  i,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  footer,
+  header,
+  menu,
+  nav,
+  section,
+  video,
+  a {
+    color: #222;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.8px;
+    scroll-behavior: smooth;
+    outline: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: -0.64px;
+    word-break: keep-all;
+  }
+
+  body {
+    line-height: 1;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+
+  ul,
+  ol,
+  li {
+    list-style: none;
+    word-break: keep-all;
+  }
+
+  strong {
+    display: inline-block;
+    font-size: inherit;
+    letter-spacing: 0.4px;
+  }
+
+  a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+  }
+
+  input,
+  select {
+    vertical-align: middle;
+    padding: 10px 12px;
+  }
+
+  p {
+    line-height: 1.7;
+    letter-spacing: -0.32px;
+    word-break: keep-all;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  label {}
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="tel"] {
+    display: block;
+    width: 100%;
+    height: 44px;
+    border: 1px solid var(--border-color-default);
+    font-size: 15px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 4px;
+    font-weight: normal;
+    color: #333333;
+    padding: 4px 16px;
+    background: #fff;
+    outline: none;
+  }
+
+  input:read-only,
+  input:disabled,
+  textarea:read-only {
+    font-size: 15px;
+    background: #f7f7f7;
+  }
+
+  input::placeholder {
+    font-size: inherit;
+    color: #999999;
+    font-weight: 400;
+  }
+
+  select {
+    height: 44px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+
+  input::placeholder {
+    font-size: inherit;
+    color: #888;
+  }
+
+  button {
+    font-size: 16px;
+    border-radius: 4px;
+    border: 0;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+    padding: 14px;
+    font-size: 15px;
+    outline: 0;
+    border: 1px solid var(--border-color-default);
+    border-radius: 4px;
+  }
+
+  textarea::placeholder {
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 0;
+    border-top: 1px solid #333333;
+    table-layout: fixed;
+  }
+
+  table thead {
+    border-bottom: 1px solid #DDDDDD;
+  }
+
+  table thead th {
+    font-weight: 500;
+  }
+
+  table tbody tr {
+    border-bottom: 1px solid #DDDDDD;
+  }
+
+  table tbody td {
+    font-weight: 400;
+  }
+
+  i {
+    display: inline-block;
+  }

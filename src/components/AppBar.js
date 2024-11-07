@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
 
-const TopHeader = styled.div`
+const AppBarArea = styled.div`
   height:60px;
   background-color: #f6f8fa;
   padding: 0 20px;
@@ -13,17 +13,17 @@ const TopHeader = styled.div`
 ` 
 
 const StyledHeader = styled.h2`
-  font-size:18px;
+  font-size:20px;
   font-weight:500;
 `
 
-function DetailHeader({title, buttonName}) {
+function AppBar({title, buttonName, onConfirm }) {
   return (
-    <TopHeader>
+    <AppBarArea>
       <StyledHeader>{title}</StyledHeader>
-      <Button variant='contained'>{buttonName}</Button>
-    </TopHeader>
+      <Button variant='contained' onClick={onConfirm}>{buttonName}</Button>
+    </AppBarArea>
   )
 }
 
-export default DetailHeader;
+export default AppBar;
