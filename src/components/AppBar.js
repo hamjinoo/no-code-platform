@@ -14,7 +14,7 @@ const AppBarArea = styled.div`
 
 const StyledHeader = styled.h2`
   font-size:20px;
-  font-weight:500;
+  font-weight:600;
 `
 
 function AppBar({title, buttonName, onConfirm }) {

@@ -15,7 +15,15 @@ function TableRecord() {
   const index = location.pathname.split('/').slice(-1)[0];
 
   const handleSavePage = () => {
-    console.log(recordList); // 현재 레코드 상태 저장 로직 (예: 로컬 스토리지에 저장)
+    // 필드만 보이는 것만 저장하기
+    const filteredRecordList = fieldList.reduce((acc, field, i) => {
+      if (recordTypeList[i] && recordList[field.name]) {
+        acc[field.name] = recordList[field.name];
+      }
+      return acc;
+    }, {});
+
+    console.log( filteredRecordList ); // 현재 레코드 상태 저장 로직 (예: 로컬 스토리지에 저장)
   };
 
   useEffect(() => {
@@ -77,7 +85,20 @@ function TableRecord() {
   // 필드 가시성 토글
   const handleChangeLabel = (index) => {
     setRecordTypeList((prev) =>
-      prev.map((item, i) => (i === index ? !item : item))
+      prev.map((item, i) => {
+        if (i === index) {
+          // 토글이 `false`가 될 때 해당 필드의 데이터를 삭제
+          if (!item) {
+            setRecordList((prevRecordList) => {
+              const updatedRecordList = { ...prevRecordList };
+              delete updatedRecordList[fieldList[i].name]; // 필드 데이터 삭제
+              return updatedRecordList;
+            });
+          }
+          return !item;
+        }
+        return item;
+      })
     );
   };
 
@@ -135,6 +156,7 @@ const Detail = styled.div`
 
 const Label = styled.label`
   display: block;
+  width: 240px;
   margin: 20px 0 10px;
 `;
 

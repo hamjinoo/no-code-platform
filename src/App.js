@@ -3,7 +3,6 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import CreatePage from './components/CreatePage';
-import FieldManagement from './components/FieldManagement';
 import Sidebar from './components/Sidebar';
 import TableDetail from './components/TableDetail';
 import TableList from './components/TableList';
@@ -30,7 +29,6 @@ function App() {
           <Routes>
             <Route path="/" element={<TableList />} />
             <Route path="/tables/:tableName" element={<TableDetail />} />
-            <Route path="/fields" element={<FieldManagement />} />
             <Route path="/tables/records/:tableName" element={<TableRecord />} />
             <Route path="/create" element={<CreatePage />} />
           </Routes>

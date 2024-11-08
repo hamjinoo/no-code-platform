@@ -10,18 +10,17 @@ function Sidebar() {
 
   const index = location.pathname.split('/').slice(-1)[0]
 
-  console.log(index);
-  
-
   return (
     <SidebarContainer>
       <SidebarTitle>메뉴</SidebarTitle>
       <NavList>
         <StyledLink to="/">테이블 목록</StyledLink>
-        <StyledLink to="/fields">필드 관리</StyledLink>
-        <StyledLink to="/create">페이지 만들기</StyledLink>
         {location.pathname.includes('tables') && (
-          <StyledLink className='record' to={`/tables/records/${index}`}>레코드 화면 관리</StyledLink>
+          <>
+            <StyledLink to="/fields">(미작업) 필드 관리</StyledLink>
+            <StyledLink to="/create">(미작업) 페이지 만들기</StyledLink>
+            <StyledLink className='record' to={`/tables/records/${index}`}>레코드 화면 관리</StyledLink>
+          </>
         )}
       </NavList>
     </SidebarContainer>
@@ -37,7 +36,7 @@ export default Sidebar;
 
 
 const SidebarContainer = styled.div`
-  width: 200px;
+  width: 220px;
   height:100vh;
   background-color: #f6f8fa;
   padding: 20px;

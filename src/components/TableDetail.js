@@ -128,7 +128,7 @@ function TableDetail() {
           </DndContext>
         </FiledArea>
         <FiledAdd>
-          <Label>필드 이름</Label>
+          <Label>추가 필드 이름</Label>
           <TextField
             required
             placeholder="필드 1"
