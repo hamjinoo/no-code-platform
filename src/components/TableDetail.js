@@ -7,6 +7,7 @@ import {
   useSensor,
   useSensors
 } from '@dnd-kit/core';
+import { v4 as uuidv4 } from 'uuid'; // uuid 라이브러리를 사용하여 고유 ID 생성
 
 import {
   arrayMove,
@@ -46,13 +47,13 @@ function SortableItem({ id, children }) {
   );
 }
 
+
 function TableDetail() {
   const [fieldName, setFieldName] = useState('');
   const [fieldList, setFieldList] = useState([]);
-  const [activeId, setActiveId] = useState(null); // 드래그 중인 아이템의 ID
+  const [activeId, setActiveId] = useState(null);
   const location = useLocation();
 
-  // useSensors 호출을 컴포넌트 내부로 이동
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -67,7 +68,8 @@ function TableDetail() {
 
   const handleSaveField = () => {
     if (fieldName.trim()) {
-      const updatedFields = [...fieldList, fieldName];
+      const newField = { id: uuidv4(), name: fieldName }; // 고유 ID 추가
+      const updatedFields = [...fieldList, newField];
       localStorage.setItem(`table${location.pathname}`, JSON.stringify(updatedFields));
       setFieldList(updatedFields);
       setFieldName('');
@@ -77,17 +79,17 @@ function TableDetail() {
   const handleDragEnd = (event) => {
     const { active, over } = event;
     if (active.id !== over.id) {
-      const oldIndex = fieldList.indexOf(active.id);
-      const newIndex = fieldList.indexOf(over.id);
+      const oldIndex = fieldList.findIndex(field => field.id === active.id);
+      const newIndex = fieldList.findIndex(field => field.id === over.id);
       const newFieldList = arrayMove(fieldList, oldIndex, newIndex);
       setFieldList(newFieldList);
       localStorage.setItem(`table${location.pathname}`, JSON.stringify(newFieldList));
     }
-    setActiveId(null);  
+    setActiveId(null);
   };
 
-  const handleDeleteField = (index) => {
-    const updatedFields = fieldList.filter((_, i) => i !== index);
+  const handleDeleteField = (fieldId) => {
+    const updatedFields = fieldList.filter(field => field.id !== fieldId);
     setFieldList(updatedFields);
     localStorage.setItem(`table${location.pathname}`, JSON.stringify(updatedFields));
   };
@@ -103,12 +105,14 @@ function TableDetail() {
             onDragStart={(event) => setActiveId(event.active.id)}
             onDragEnd={handleDragEnd}
           >
-            <SortableContext items={fieldList} strategy={verticalListSortingStrategy}>
+            <SortableContext items={fieldList.map(field => field.id)} strategy={verticalListSortingStrategy}>
               <List>
-                {fieldList.map((field, index) => (
-                  <SortableItem key={field} id={field}>
-                    <ListItemText primary={field} />
-                    <ClearIcon onClick={() => handleDeleteField(index)} style={{ cursor: 'pointer' }} />
+                {fieldList.map((field) => (
+                  <SortableItem key={field.id} id={field.id}>
+                    <ListItemText 
+                      primary={field.name || 'Unknown'}
+                    />
+                    <ClearIcon onClick={() => handleDeleteField(field.id)} style={{ cursor: 'pointer' }} />
                   </SortableItem>
                 ))}
               </List>
@@ -127,7 +131,6 @@ function TableDetail() {
           <Label>필드 이름</Label>
           <TextField
             required
-            id="standard-required"
             placeholder="필드 1"
             fullWidth
             value={fieldName}
@@ -138,6 +141,7 @@ function TableDetail() {
     </div>
   );
 }
+
 
 export default TableDetail;
 

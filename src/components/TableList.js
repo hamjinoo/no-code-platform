@@ -46,21 +46,23 @@ function TableList() {
       {/* 테이블 리스트 */}
       <List>
         {tableList.map((table, index) => (
-          <CustomListItem button key={index} onClick={() => handleTableClick(index)}>
+          <CustomListItem key={index} onClick={() => handleTableClick(index)}>
             <ListItemText primary={table} />
           </CustomListItem>
         ))}
       </List>
       
       <h3>페이지 설명서</h3>
+      <p>이 제품은 테이블을 직접 추가하여 자신이 필요한 페이지를 직접 구현할 수 있는 No-Code 플랫폼입니다.</p>
+      <p>첫번째 제품이 괜찮을 시에</p>
       <ul>
-        <li>1. 테이블 페이지에서 필요한 테이블을 생성한다.</li>
+        <li>1. '테이블 목록 페이지'에서 필요한 테이블을 생성합니다.</li>
         <li>
-          2. 해당 테이블에 들어가서 테이블에 필요한 필드(컬럼)를 만들어준다. <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;현재는 텍스트만 넣을 수 있다.
+          2. '테이블 목록 페이지'에서 생성한 테이블에 들어가 필요한 필드(컬럼)를 만들어줍니다. <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;(현재는 텍스트만 넣을 수 있습니다.)
         </li>
-        <li>3. 필드 생성 후 순서 변경이 필요하면 드래그 드롭을 통해 순서를 변경할 수 있고 X버튼을 통해 필드를 삭제할 수 있다.</li>
-        <li>4. 레코드 화면 관리는 테이블에서 필드를 만드는 화면에서 볼 수가 있는데 여기서 실제로 화면에 나타내고자 하는 것을 보이기 또는 숨기게 할 수 있다.</li>
+        <li>3. 필드 생성 후 순서 변경이 필요하면 드래그 드롭을 통해 순서를 변경할 수 있고, X 버튼을 통해 필드를 삭제할 수 있습니다.</li>
+        <li>4. '레코드 화면 관리 페이지'는 테이블에서 필드를 만드는 화면에서 접속할 수가 있으며, 실제로 화면에 나타내고자 하는 필드를 컨트롤 할 수 있습니다.</li>
         <li>2. </li>
         <li>2. </li>
         <li>2. </li>
