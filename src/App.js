@@ -28,9 +28,9 @@ function App() {
         <MainContent>
           <Routes>
             <Route path="/" element={<TableList />} />
-            <Route path="/tables/:tableName" element={<TableDetail />} />
-            <Route path="/tables/records/:tableName" element={<TableRecord />} />
-            <Route path="/create" element={<CreatePage />} />
+            <Route path="/table/:tableName" element={<TableDetail />} />
+            <Route path="/table/record/:tableName" element={<TableRecord />} />
+            <Route path="/table/create" element={<CreatePage />} />
           </Routes>
         </MainContent>
       </AppLayout>

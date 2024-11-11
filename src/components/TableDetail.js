@@ -61,16 +61,21 @@ function TableDetail() {
     })
   );
 
+  const splitPath = location.pathname.split('/').slice(1).join("/")
+  
+
   useEffect(() => {
-    const fields = JSON.parse(localStorage.getItem(`table${location.pathname}`)) || [];
+    const fields = JSON.parse(localStorage.getItem(splitPath)) || [];
     setFieldList(fields);
   }, [location.pathname]);
+
+  
 
   const handleSaveField = () => {
     if (fieldName.trim()) {
       const newField = { id: uuidv4(), name: fieldName }; // 고유 ID 추가
       const updatedFields = [...fieldList, newField];
-      localStorage.setItem(`table${location.pathname}`, JSON.stringify(updatedFields));
+      localStorage.setItem(splitPath, JSON.stringify(updatedFields));
       setFieldList(updatedFields);
       setFieldName('');
     }

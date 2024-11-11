@@ -15,7 +15,7 @@ function TableRecord() {
   const index = location.pathname.split('/').slice(-1)[0];
 
   const handleSavePage = () => {
-    // 필드만 보이는 것만 저장하기
+    // 필드 중 보이는 것만 필터링하여 저장
     const filteredRecordList = fieldList.reduce((acc, field, i) => {
       if (recordTypeList[i] && recordList[field.name]) {
         acc[field.name] = recordList[field.name];
@@ -23,12 +23,17 @@ function TableRecord() {
       return acc;
     }, {});
 
-    console.log( filteredRecordList ); // 현재 레코드 상태 저장 로직 (예: 로컬 스토리지에 저장)
+    console.log(filteredRecordList); // 현재 레코드 상태 확인용 로그
+
+    
+
+    localStorage.setItem(`table/${index}/record`, JSON.stringify(filteredRecordList));
   };
+
 
   useEffect(() => {
     // 로컬 스토리지에서 필드 목록 가져오기
-    const data = JSON.parse(localStorage.getItem(`table/tables/${index}`)) || [];
+    const data = JSON.parse(localStorage.getItem(`table/${index}`)) || [];
     setFieldList(data);
     
     // 각 필드의 초기값 설정

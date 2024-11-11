@@ -36,7 +36,7 @@ function TableList() {
 
   // 테이블 클릭 시 페이지 이동
   const handleTableClick = (index) => {
-    navigate(`/tables/${index}`);
+    navigate(`/table/${index}`);
   };
 
   return (
