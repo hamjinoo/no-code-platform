@@ -12,17 +12,31 @@ function Sidebar() {
 
   return (
     <SidebarContainer>
-      <SidebarTitle>메뉴</SidebarTitle>
-      <NavList>
-        <StyledLink to="/">테이블 목록</StyledLink>
-        {location.pathname.includes('table') && (
-          <>
-            <StyledLink to="/table/fields">(미작업) 필드 관리</StyledLink>
-            <StyledLink to="/table/create">페이지 만들기</StyledLink>
-            <StyledLink className='record' to={`/table/record/${index}`}>레코드 화면 관리</StyledLink>
-          </>
-        )}
-      </NavList>
+      <SwitchMenu>
+        <StyledLink to="/">설명서</StyledLink>
+        <StyledLink to="/table">테이블 <br />목록</StyledLink>
+        <StyledLink to="/page">메뉴 <br />목록</StyledLink>
+      </SwitchMenu>
+      <MainMenu>
+        <SidebarTitle>메뉴</SidebarTitle>
+        <NavList>
+          {location.pathname.includes('table') && (
+            <>
+              <StyledLink to="/table">테이블 목록</StyledLink>
+              {location.pathname.includes(`table/${index}`) && (
+                <>
+                  <StyledLink to={`/table/record/${index}`}>레코드 화면 관리</StyledLink>
+                </>
+              )}
+            </>
+          )}
+          {location.pathname.includes('page') && (
+            <>
+              <StyledLink to="/page/create">페이지 만들기</StyledLink>
+            </>
+          )}
+          </NavList>
+      </MainMenu>
     </SidebarContainer>
   );
 }
@@ -33,20 +47,28 @@ export default Sidebar;
 
 
 
-
-
 const SidebarContainer = styled.div`
-  width: 220px;
+  display:flex;
+  width: 260px;
   height:100vh;
   background-color: #f6f8fa;
-  padding: 20px;
   border-right:1px solid #eee;
 `;
+
+const SwitchMenu = styled.div`
+  padding: 20px 10px;
+  border-right:1px solid #eee;
+`
 
 const SidebarTitle = styled.h2`
   font-size:24px;
   margin-bottom:20px;
 `;
+
+const MainMenu = styled.div`
+  flex: 1;
+  padding: 20px 14px;
+`
 
 const NavList = styled.div`
   overflow-y:auto;

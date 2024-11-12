@@ -42,62 +42,47 @@ function TableList() {
   return (
     <>
       <AppBar title="테이블 목록" buttonName="테이블 생성" onConfirm={handleClickOpen} />
+      <Detail>
+        {/* 테이블 리스트 */}
+        <List>
+          {tableList.map((table, index) => (
+            <CustomListItem key={index} onClick={() => handleTableClick(index)}>
+              <ListItemText primary={table} />
+            </CustomListItem>
+          ))}
+        </List>
+  
 
-      {/* 테이블 리스트 */}
-      <List>
-        {tableList.map((table, index) => (
-          <CustomListItem key={index} onClick={() => handleTableClick(index)}>
-            <ListItemText primary={table} />
-          </CustomListItem>
-        ))}
-      </List>
-      
-      <div style={{ marginTop: '80px', marginLeft: '20px' }}>
-        <h3>페이지 설명서</h3>
-        <p>이 제품은 테이블을 직접 추가하여 자신이 필요한 페이지를 직접 구현할 수 있는 No-Code 플랫폼입니다.</p>
-        <p>첫번째 제품이 괜찮을 시 추가적인 고도화를 진행하겠습니다.</p>
-        
-        <br />
-
-        <ul>
-          <li>1. '테이블 목록' 페이지에서 필요한 테이블을 생성합니다.</li>
-          <li>
-            2. 생성한 테이블에 들어가 필요한 필드(컬럼)를 만들어줍니다. <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;(현재는 텍스트와 숫자만 넣을 수 있습니다.)
-          </li>
-          <li>3. 필드 생성 후 순서 변경이 필요하면 드래그 드롭을 통해 순서를 변경할 수 있고, X 버튼을 통해 필드를 삭제할 수 있습니다.</li>
-          <li>4. 레코드 생성은 테이블을 통해 만든 이후에 해당 테이블과 비슷한 형태의 페이지를 구현할 수 있게 해줍니다. </li>
-          <li>5. '레코드 화면 관리' 페이지는 '테이블 목록' 페이지에서 접속할 수가 있으며, 실제로 화면에 나타내고자 하는 필드를 컨트롤 할 수 있습니다.</li>
-          <li>2. </li>
-          <li>2. </li>
-          </ul>
-        </div>
-
-      <Modal
-        open={openModal}
-        onClose={handleClose}
-        onConfirm={handleSaveTable} // 확인 버튼 클릭 시 저장
-        title="새 테이블 만들기"
-        confirmText="확인"
-        cancelText="취소"
-      >
-        <TextField
-          autoFocus
-          required
-          label="테이블 이름"
-          variant="standard"
-          fullWidth
-          value={tableName}
-          onChange={(e) => setTableName(e.target.value)}
-        />
-      </Modal>
+        <Modal
+          open={openModal}
+          onClose={handleClose}
+          onConfirm={handleSaveTable} // 확인 버튼 클릭 시 저장
+          title="새 테이블 만들기"
+          confirmText="확인"
+          cancelText="취소"
+        >
+          <TextField
+            autoFocus
+            required
+            label="테이블 이름"
+            variant="standard"
+            fullWidth
+            value={tableName}
+            onChange={(e) => setTableName(e.target.value)}
+          />
+        </Modal>
+      </Detail>
     </>
   );
 }
 
 export default TableList;
 
-
+const Detail = styled.div`
+  display: flex;
+  min-height: calc(100vh - 60px);
+  padding-left: 20px;
+`;
 
 const CustomListItem = styled(ListItem)`
   border:1px solid #dbdbdb;

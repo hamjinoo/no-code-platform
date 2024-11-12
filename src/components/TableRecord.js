@@ -44,7 +44,7 @@ function TableRecord() {
     setRecordList(initialRecordState);
 
     // 필드 가시성 초기 상태 설정
-    setRecordTypeList(data.map(() => false)); // 모든 필드를 숨긴 상태로 초기화
+    setRecordTypeList(data.map(() => true)); // 모든 필드를 숨긴 상태로 초기화
   }, [location.pathname, index]);
 
   // 필드의 타입에 따라 입력 필드 생성
